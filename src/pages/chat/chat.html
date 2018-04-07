@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Chat</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-card *ngFor="let item of messages">
+      <ion-card-header>
+          {{item.username}}
+      </ion-card-header>
+      <ion-card-content>
+        {{item.message}}
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+  
+</ion-content>
+
+<ion-footer fixed>
+    <ion-toolbar>
+      <form (ngSubmit)="messageForm()">
+        <ion-row>
+          <ion-textarea class="message_input" [(ngModel)]="message" name="message" type="text"></ion-textarea>
+          <button class="button_push" ion-button block type="submit">
+            <ion-icon name="paper-plane"></ion-icon>
+          </button>
+        </ion-row>
+      </form>
+    </ion-toolbar>
+  </ion-footer>
