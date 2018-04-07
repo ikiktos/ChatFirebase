@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/map';
 
 @IonicPage()
@@ -22,9 +22,7 @@ export class ChatPage {
     public navParams: NavParams) {
     this.username = this.navParams.get('username');
     this.messageArr = this.db.list<Item>('/chat').valueChanges().subscribe(data => {
-      data.map(elem => {
-        this.messages.push(elem);
-      })
+     this.messages = data;
     })
   }
 
